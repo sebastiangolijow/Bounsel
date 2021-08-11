@@ -52,7 +52,7 @@ export function SignUp() {
     const confirmPost = await dispatch(postUser(user));
     if (confirmPost.status !== 400) {
       swal(
-        "Welcome to Onestic!",
+        "Welcome to Elastacloud!",
         {
           buttons: {
             button: "Ok",

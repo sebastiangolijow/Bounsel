@@ -56,9 +56,11 @@ function Reducer(state = InitialState, action) {
           Carrito: state.Carrito.concat(action.payload)
         } 
         case 'updateTime': 
+        let key = JSON.parse(window.localStorage.getItem('key'));
+        let email = key.email;
         return {
           ...state,
-          timeLogged: action.payload
+          timeLogged: action.payload.filter(item => item.email === email)
         } 
       case "SEARCH":
         if(!action.price && !action.date){

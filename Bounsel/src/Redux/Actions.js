@@ -61,9 +61,11 @@ export const LogOut = () => {
   LogOutHour = LogOutHour.split('-');
   let LogHours = LogInHour[3] - LogOutHour[3];
   let LogMinutes = LogInHour[4].toString() - LogOutHour[4];
-  let loggedTime = logDate.toString() + LogHours.toString() + 'Hs' + '-' + LogMinutes.toString() + 'Mins';
+  let loggedTime = logDate.toString() + LogHours.toString() + 'Hs' + '-' + LogMinutes.toString() + 'Mins' + '-';
   alert(loggedTime);
-  axios.post("http://localhost:3001/updateUser", { loggedTime})
+  let key = JSON.parse(window.localStorage.getItem('key'));
+  let email = key.email;
+  axios.post("http://localhost:3001/updateUser", {email, loggedTime})
   window.localStorage.removeItem('key');
   return {
     type: LOGOUT,
